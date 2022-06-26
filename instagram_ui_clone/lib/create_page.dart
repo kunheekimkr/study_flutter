@@ -46,6 +46,8 @@ class _CreatePageState extends State<CreatePage> {
         IconButton(
             icon: const Icon(Icons.send),
             onPressed: () {
+              _uploadPost(context);
+              /*
               final firebaseStorageRef = FirebaseStorage.instance
                   .ref()
                   .child('post')
@@ -70,6 +72,7 @@ class _CreatePageState extends State<CreatePage> {
                   });
                 });
               });
+              */
             })
       ],
       backgroundColor: Colors.white,
@@ -104,5 +107,30 @@ class _CreatePageState extends State<CreatePage> {
     } else {
       //사진 미 선택 처리
     }
+  }
+
+  Future<void> _uploadPost(BuildContext context) async {
+    final firebaseStorageRef = FirebaseStorage.instance
+        .ref()
+        .child('post')
+        .child('${DateTime.now().millisecondsSinceEpoch}.png');
+
+    final task = await firebaseStorageRef.putFile(
+        _image!, SettableMetadata(contentType: 'image/png'));
+
+    final uri = await task.ref.getDownloadURL();
+
+    final doc = FirebaseFirestore.instance.collection('post').doc();
+
+    await doc.set({
+      'id': doc.id,
+      'photoUrl': uri.toString(),
+      'contents': textEditingController.text,
+      'email': widget.user.email,
+      'displayName': widget.user.displayName,
+      'userPhotoUrl': widget.user.photoURL,
+    });
+
+    Navigator.pop(context);
   }
 }
