@@ -9,8 +9,8 @@ class DetailPostPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
           'Browse',
           style: TextStyle(color: Colors.black),
         ),
@@ -27,18 +27,19 @@ class DetailPostPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: <Widget>[
                   CircleAvatar(
                       backgroundImage: NetworkImage(document['userPhotoUrl'])),
                   Padding(
-                    padding: EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.only(left: 8.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(document['email'],
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                            style:
+                                const TextStyle(fontWeight: FontWeight.bold)),
                         Text(document['displayName']),
                       ],
                     ),
@@ -50,7 +51,7 @@ class DetailPostPage extends StatelessWidget {
               child: Image.network(document['photoUrl'])),
           Text(
             document['contents'],
-            style: TextStyle(fontSize: 20.0),
+            style: const TextStyle(fontSize: 20.0),
           ),
         ],
       )),

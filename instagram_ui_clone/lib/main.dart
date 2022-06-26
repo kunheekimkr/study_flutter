@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:instagram_ui_clone/root_page.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
@@ -17,9 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: Colors.white,
-          accentColor: Colors.black),
+        primarySwatch: Colors.blue,
+        primaryColor: Colors.white,
+      ),
       home: RootPage(),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:instagram_ui_clone/home_page.dart';
 import 'package:instagram_ui_clone/account_page.dart';
 import 'package:instagram_ui_clone/search_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class TabPage extends StatefulWidget {
@@ -33,9 +35,9 @@ class _TabPageState extends State<TabPage> {
       body: Center(child: _pages[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
           fixedColor: Colors.black,
-          onTap: _OnItemTapped,
+          onTap: _onItemTapped,
           currentIndex: _selectedIndex,
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: const Icon(Icons.home),
               label: 'Home',
@@ -52,7 +54,7 @@ class _TabPageState extends State<TabPage> {
     );
   }
 
-  void _OnItemTapped(int value) {
+  void _onItemTapped(int value) {
     setState(() {
       _selectedIndex = value;
     });

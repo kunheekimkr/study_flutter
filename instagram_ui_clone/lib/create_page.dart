@@ -1,6 +1,9 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
+
 import 'package:image_picker/image_picker.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -31,17 +34,17 @@ class _CreatePageState extends State<CreatePage> {
       body: _buildBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: _getImage,
-        child: Icon(Icons.add_a_photo),
+        child: const Icon(Icons.add_a_photo),
       ),
     );
   }
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: const IconThemeData(color: Colors.black),
       actions: <Widget>[
         IconButton(
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             onPressed: () {
               final firebaseStorageRef = FirebaseStorage.instance
                   .ref()
@@ -79,7 +82,7 @@ class _CreatePageState extends State<CreatePage> {
         children: <Widget>[
           _postImage(),
           TextField(
-            decoration: InputDecoration(hintText: 'Enter your text'),
+            decoration: const InputDecoration(hintText: 'Enter your text'),
             controller: textEditingController,
           )
         ],
@@ -88,7 +91,7 @@ class _CreatePageState extends State<CreatePage> {
   }
 
   Widget _postImage() {
-    return _image == null ? Text('No Image') : Image.file(_image!);
+    return _image == null ? const Text('No Image') : Image.file(_image!);
   }
 
   Future _getImage() async {

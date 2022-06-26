@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:instagram_ui_clone/create_page.dart';
+import 'package:instagram_ui_clone/detail_post_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:instagram_ui_clone/detail_post_page.dart';
 
 class SearchPage extends StatefulWidget {
   final User user;
@@ -22,8 +24,8 @@ class _SearchPageState extends State<SearchPage> {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => CreatePage(widget.user)));
         },
-        child: Icon(Icons.create),
         backgroundColor: Colors.blue,
+        child: const Icon(Icons.create),
       ),
     );
   }
@@ -41,7 +43,7 @@ class _SearchPageState extends State<SearchPage> {
           var items = snapshot.data.docs ?? [];
 
           return GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   childAspectRatio: 1.0,
                   mainAxisSpacing: 1.0,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:instagram_ui_clone/tab_page.dart';
 import 'package:instagram_ui_clone/login_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class RootPage extends StatelessWidget {
